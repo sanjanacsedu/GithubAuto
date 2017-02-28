@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class GithubMainPage {
+public class GithubAutomator {
 
   public static void main(String[] args) {
     // TODO Auto-generated method stub
@@ -12,6 +12,7 @@ public class GithubMainPage {
         "//Users/nafiurrashid/Desktop/selenium/chromedriver");
     WebDriver driver = new ChromeDriver();
     GithubHomePage homePage = new GithubHomePage(driver);
+    homePage.load();
     GithubLoginPage loginPage = homePage.singIn();
     loginPage.login("githubtest456", "githubtest123");
 

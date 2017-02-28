@@ -16,8 +16,12 @@ public class GithubHomePage {
     this.driver = driver;
   }
 
-  GithubLoginPage singIn() {
+  public void load() {
     driver.get("https://github.com/");
+  }
+
+  public GithubLoginPage singIn() {
+    // driver.get("https://github.com/");
     WebElement linkElement = driver.findElement(By.linkText("Sign in"));
     linkElement.click();
     return new GithubLoginPage(driver);
