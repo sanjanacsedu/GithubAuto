@@ -20,6 +20,10 @@ public class GithubHomePage {
     driver.get("https://github.com/");
   }
 
+  public String getTitle() {
+    return driver.getTitle();
+  }
+
   public GithubLoginPage singIn() {
     // driver.get("https://github.com/");
     WebElement linkElement = driver.findElement(By.linkText("Sign in"));
@@ -28,6 +32,15 @@ public class GithubHomePage {
 
   }
 
+
+  public GitHubFeaturesPage gotoFeatures() {
+    // click features link
+    // return
+    WebElement featureLink = driver.findElement(By.linkText("Features"));
+    featureLink.click();
+    return new GitHubFeaturesPage(driver);
+
+  }
 
 
 }
