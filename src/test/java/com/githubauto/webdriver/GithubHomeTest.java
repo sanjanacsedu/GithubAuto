@@ -15,8 +15,8 @@ public class GithubHomeTest {
    * 
    * Automation: 1. Create a webdriver ( firefox/chrome) 2. Create a GithubHomePage instance and
    * pass driver to it 3. GithubHomepage.load - > will load github home page 4.
-   * GithubHomepage.getTitle -> Get the title 5. verify the title
-   * Get the https://github.com/features page title
+   * GithubHomepage.getTitle -> Get the title 5. verify the title Get the
+   * https://github.com/features page title
    * 
    */
   @Test
@@ -28,12 +28,22 @@ public class GithubHomeTest {
     homePage.load();
     String title = homePage.getTitle();
     Assert.assertEquals("The world's leading software development platform · GitHub", title);
+  }
+
+  @Test
+  public void verifyTitleFeaturePage() {
+    System.setProperty("webdriver.chrome.driver",
+        "//Users/nafiurrashid/Desktop/selenium/chromedriver");
+    WebDriver driver = new ChromeDriver();
+    GithubHomePage homePage = new GithubHomePage(driver);
+    homePage.load();
     GitHubFeaturesPage featurePage = new GitHubFeaturesPage(driver);
     homePage.gotoFeatures();
     String titleFeature = featurePage.getTitle();
-    Assert.assertEquals("Features For Collaborative Coding - Developers Work Better, Together | GitHub · GitHub", titleFeature);
-       
-  }
+    Assert.assertEquals(
+        "Features For Collaborative Coding - Developers Work Better, Together | GitHub · GitHub",
+        titleFeature);
 
+  }
 
 }
