@@ -4,7 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.githubauto</groupId>
 	<artifactId>webdriver</artifactId>
-
 	<version>1.0-SNAPSHOT</version>
 	<name>Github automation</name>
 	<description>A simple example using Google Guice. 
