@@ -2,6 +2,7 @@ package com.githubauto.webdriver;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -19,11 +20,15 @@ public class GithubHomeTest {
    * https://github.com/features page title
    * 
    */
+  public WebDriver driver;
+
+  public GithubHomeTest() {
+    driver = WebdriverBuilder.getDriver();
+
+  }
+
   @Test
   public void verifyTitleWithoutLogin() {
-    System.setProperty("webdriver.chrome.driver",
-        "//Users/nafiurrashid/Desktop/selenium/chromedriver");
-    WebDriver driver = new ChromeDriver();
     GithubHomePage homePage = new GithubHomePage(driver);
     homePage.load();
     String title = homePage.getTitle();
@@ -32,9 +37,6 @@ public class GithubHomeTest {
 
   @Test
   public void verifyTitleFeaturePage() {
-    System.setProperty("webdriver.chrome.driver",
-        "//Users/nafiurrashid/Desktop/selenium/chromedriver");
-    WebDriver driver = new ChromeDriver();
     GithubHomePage homePage = new GithubHomePage(driver);
     homePage.load();
     GitHubFeaturesPage featurePage = new GitHubFeaturesPage(driver);
