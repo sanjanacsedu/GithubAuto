@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.githubauto.webdriver.pages.GitHubFeaturesPage;
 import com.githubauto.webdriver.pages.GithubHomePage;
+import com.githubauto.webdriver.pages.GithubSearchResultsPage;
 
 public class GithubHomeTest {
 
@@ -45,6 +46,19 @@ public class GithubHomeTest {
     Assert.assertEquals(
         "Features For Collaborative Coding - Developers Work Better, Together | GitHub · GitHub",
         titleFeature);
+
+  }
+  
+  @Test
+  public void verifySearchResult() {
+    GithubHomePage homePage = new GithubHomePage(driver);
+    homePage.load();
+   // homePage.search("hibernate");
+    GithubSearchResultsPage searchPage = new GithubSearchResultsPage(driver);
+    searchPage.search("hibernate");
+    int count = searchPage.numberOfResults();
+    Assert.assertEquals(10,count);
+    searchPage.titleResults();
 
   }
 
