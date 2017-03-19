@@ -15,6 +15,10 @@ public class GithubAutomator {
     homePage.load();
     GithubLoginPage loginPage = homePage.singIn();
     loginPage.login("githubtest456", "githubtest123");
+    GithubSearchResultsPage searchPage = new GithubSearchResultsPage(driver);
+    searchPage.search("hibernate");
+    searchPage.numberOfResults();
+    searchPage.titleResults();
 
   }
 
