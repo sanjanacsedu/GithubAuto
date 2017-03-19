@@ -19,17 +19,19 @@ public class GithubSearchResultsPage {
     this.driver = driver;
   }
 
-  public void numberOfResults() {
+  public int numberOfResults() {
     List<WebElement> myElements = driver.findElements(By.cssSelector("div+ul > li"));
     System.out.println("Number of result is: " + myElements.size());
+    return myElements.size();
   }
 
-  public void titleResults() {
+  public List<WebElement> titleResults() {
     List<WebElement> myElements = driver.findElements(By.cssSelector("div+ul > li"));
     System.out.println("Title from the search results: ");
     for (WebElement e : myElements) {
       System.out.println(e.findElement(By.tagName("h3")).getText());
     }
+    return myElements;
   }
 
   public void search(String input) {
