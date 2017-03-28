@@ -35,7 +35,6 @@ public class GithubUserHomeTest {
   public void verifySignIn() {
     // On home page, signIn() - > GithubLoginPage
     // On GithubLoginPage, login(String userName, String password) -> GithubUserHomepage
-
     driver.manage().deleteAllCookies();
     GithubHomePage homePage = new GithubHomePage(driver);
     homePage.load();
@@ -50,7 +49,7 @@ public class GithubUserHomeTest {
     // On home page, signIn() - > GithubLoginPage
     // On GithubLoginPage, login(String userName, String password) -> GithubUserHomepage
     // Create a project
-    //Delete that project
+    // Delete that project
     driver.manage().deleteAllCookies();
     GithubHomePage homePage = new GithubHomePage(driver);
     homePage.load();
