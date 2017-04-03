@@ -2,7 +2,9 @@ package com.githubauto.webdriver;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -24,24 +26,38 @@ public class GithubUserHomeTest {
    * 
    */
   public WebDriver driver;
+  GithubUserHomepage userHome;
 
   public GithubUserHomeTest() {
     driver = WebdriverBuilder.getDriver();
 
   }
+  
+  @Before
+  public void setup()
+  {
+   
+    driver.manage().deleteAllCookies();
+    GithubHomePage homePage = new GithubHomePage(driver);
+    homePage.load();
+    GithubLoginPage loginPage = homePage.singIn();
+    userHome = loginPage.login("githubtest456", "githubtest123");
+  }
 
+  @After
+  public void afterTest()
+  {
+    driver.manage().deleteAllCookies();
+  }
 
   @Test
   public void verifySignIn() {
     // On home page, signIn() - > GithubLoginPage
     // On GithubLoginPage, login(String userName, String password) -> GithubUserHomepage
-    driver.manage().deleteAllCookies();
-    GithubHomePage homePage = new GithubHomePage(driver);
-    homePage.load();
-    GithubLoginPage loginPage = homePage.singIn();
+
     // GithubUserHomepage userHome = loginPage.login("wipauto123", "Github123$");
     // loginPage.login("githubtest456", "githubtest123");
-    GithubUserHomepage userHome = loginPage.login("githubtest456", "githubtest123");
+    //GithubUserHomepage userHome = loginPage.login("githubtest456", "githubtest123");
   }
 
   @Test
@@ -50,11 +66,7 @@ public class GithubUserHomeTest {
     // On GithubLoginPage, login(String userName, String password) -> GithubUserHomepage
     // Create a project
     // Delete that project
-    driver.manage().deleteAllCookies();
-    GithubHomePage homePage = new GithubHomePage(driver);
-    homePage.load();
-    GithubLoginPage loginPage = homePage.singIn();
-    GithubUserHomepage userHome = loginPage.login("githubtest456", "githubtest123");
+  
     // userHome.locateStartButton();
     userHome.createAndDeleteProject();
   }
